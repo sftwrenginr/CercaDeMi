@@ -1,0 +1,15 @@
+<ion-header><ion-toolbar color="primary"><ion-title>Cerca de mí</ion-title></ion-toolbar></ion-header>
+<ion-content>
+  <section class="intro"><p>Explora lugares alrededor de tu ubicación</p><h1>Descubre lo que tienes cerca</h1>
+    <div class="actions"><ion-button (click)="locate()">Mi ubicación</ion-button><ion-button fill="outline" [disabled]="!location" (click)="shareLocation()">Compartir</ion-button></div>
+    <p class="status" role="status">{{ status }}</p><p *ngIf="error" class="error" role="alert">{{ error }}</p>
+  </section>
+  <div class="map-wrap"><div id="map" aria-label="Mapa de lugares cercanos"></div></div>
+  <section class="results"><div class="section-title"><h2>Lugares cercanos</h2><ion-button size="small" fill="clear" [disabled]="!location || loading" (click)="searchNearby()">{{ loading ? 'Cargando…' : 'Actualizar' }}</ion-button></div>
+    <ion-searchbar placeholder="Buscar en los resultados" [(ngModel)]="query" (ionInput)="onQueryChange()" debounce="250"></ion-searchbar>
+    <div class="chips"><ion-chip *ngFor="let item of categories" [color]="category === item ? 'primary' : 'medium'" [outline]="category !== item" (click)="changeCategory(item)">{{item}}</ion-chip></div>
+    <p *ngIf="location && !loading && !filteredPlaces.length" class="empty">No hay lugares para esta búsqueda. Cambia el filtro o pulsa Actualizar.</p>
+    <ion-list *ngIf="filteredPlaces.length"><ion-item button *ngFor="let place of filteredPlaces" (click)="showPlace(place)"><ion-label><h3>{{place.name}}</h3><p>{{place.category}} · {{place.distance}} m</p></ion-label><ion-note slot="end">Ver mapa</ion-note></ion-item></ion-list>
+    <div *ngIf="selected" class="selected"><strong>{{selected.name}}</strong><span>{{selected.category}} · {{selected.distance}} m</span><a [href]="'https://www.openstreetmap.org/?mlat=' + selected.lat + '&mlon=' + selected.lon" target="_blank" rel="noopener noreferrer">Abrir indicaciones</a></div>
+  </section>
+</ion-content>
