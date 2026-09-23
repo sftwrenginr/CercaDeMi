@@ -1,0 +1,20 @@
+:host { --ion-color-primary: #174a75; }
+.intro { padding: 21px 20px 13px; background: #eef5fa; }
+.intro p:first-child { color: #386b85; font-size: 13px; margin: 0 0 5px; }
+h1 { font-size: 24px; line-height: 1.2; margin: 0 0 15px; font-weight: 700; }
+.actions { display: flex; gap: 8px; }
+.actions ion-button { margin: 0; text-transform: none; }
+.status { color: #435565; font-size: 12px; margin: 12px 0 0; }
+.error { color: #a12626; font-size: 13px; }
+.map-wrap { height: min(42vh, 390px); min-height: 260px; }
+#map { height: 100%; width: 100%; z-index: 0; }
+.results { padding: 14px 14px 28px; }
+.section-title { display: flex; align-items: center; justify-content: space-between; }
+h2 { font-size: 19px; margin: 0 0 10px 5px; }
+ion-searchbar { padding: 0; }
+.chips { display: flex; overflow-x: auto; white-space: nowrap; gap: 2px; }
+.chips ion-chip { cursor: pointer; flex-shrink: 0; }
+.empty { font-size: 13px; color: #647587; padding: 14px; }
+.selected { margin: 12px 2px; border-radius: 12px; background: #eef5fa; padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+.selected span { color: #576977; font-size: 13px; }
+.selected a { color: #174a75; font-size: 13px; }
